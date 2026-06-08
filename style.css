@@ -1,0 +1,85 @@
+body{
+    margin:0;
+    background:black;
+    color:red;
+    font-family:monospace;
+    overflow:hidden;
+}
+
+.container{
+    position:relative;
+    z-index:10;
+    text-align:center;
+    margin-top:80px;
+}
+
+#warning{
+    font-size:3rem;
+    animation:flash .3s infinite;
+}
+
+@keyframes flash{
+    50%{
+        opacity:0.2;
+    }
+}
+
+.progress-container{
+    width:80%;
+    height:25px;
+    border:2px solid red;
+    margin:20px auto;
+}
+
+#progress{
+    width:0%;
+    height:100%;
+    background:red;
+}
+
+button{
+    padding:15px 25px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.terminal{
+    margin-top:30px;
+    font-size:20px;
+}
+
+.chat-bg{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    opacity:0.12;
+    z-index:1;
+}
+
+.msg{
+    margin:40px;
+    color:#00ff00;
+    animation:float 10s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+#glitch{
+    position:fixed;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    background:repeating-linear-gradient(
+        transparent,
+        transparent 3px,
+        rgba(255,255,255,.04) 4px
+    );
+}
