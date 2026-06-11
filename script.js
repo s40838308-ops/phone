@@ -161,28 +161,32 @@ function startHackSequence(){
 // VOICE NOTE
 // ==========================
 
-playBtn.addEventListener("click", () => {
+if (playBtn && voice) {
 
-    voice.play();
+    playBtn.addEventListener("click", () => {
 
-    playBtn.innerText =
-    "PLAYING MESSAGE...";
+        voice.play();
 
-    playBtn.disabled = true;
+        playBtn.innerText =
+        "PLAYING MESSAGE...";
 
-});
+        playBtn.disabled = true;
 
-// ==========================
-// END OF AUDIO
-// ==========================
+    });
 
-voice.addEventListener("ended", () => {
+    // ==========================
+    // END OF AUDIO
+    // ==========================
 
-    screen3.classList.remove("active");
+    voice.addEventListener("ended", () => {
 
-    screen4.classList.add("active");
+        screen3.classList.remove("active");
 
-});
+        screen4.classList.add("active");
+
+    });
+
+}
 
 // ==========================
 // OPTIONAL PHONE VIBRATION
