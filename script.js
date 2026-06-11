@@ -157,6 +157,7 @@ function startHackSequence(){
 
 }
 
+```
 // ==========================
 // VOICE NOTE
 // ==========================
@@ -207,3 +208,4 @@ if(navigator.vibrate){
     },9000);
 
 }
+```
