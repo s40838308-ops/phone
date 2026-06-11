@@ -1,60 +1,205 @@
-const progress = document.getElementById("progress");
-const btn = document.getElementById("startBtn");
+// ==========================
+// ELEMENTS
+// ==========================
+
+const screen1 = document.getElementById("screen1");
+const screen2 = document.getElementById("screen2");
+const screen3 = document.getElementById("screen3");
+const screen4 = document.getElementById("screen4");
+
+const scanProgress = document.getElementById("scanProgress");
+const hackProgress = document.getElementById("hackProgress");
+
+const scanLogs = document.getElementById("scanLogs");
+
+const hackStatus = document.getElementById("hackStatus");
+
+const playBtn = document.getElementById("playBtn");
+
 const voice = document.getElementById("voice");
 
-btn.addEventListener("click", () => {
+// ==========================
+// SCANNER LOGS
+// ==========================
 
-    voice.play();
+const logs = [
 
-    btn.style.display = "none";
+"Checking birthday database...",
 
-    document.getElementById("line2").innerText =
-        "Accessing photos...";
+"Verifying recipient...",
 
-    setTimeout(()=>{
-        document.getElementById("line3").innerText =
-        "Downloading contacts...";
-    },2000);
+"Checking contacts...",
 
-    setTimeout(()=>{
-        document.getElementById("line4").innerText =
-        "Uploading data...";
-    },4000);
+"Checking WhatsApp backups...",
 
-    let width = 0;
+"Checking gallery access...",
 
-    let interval = setInterval(() => {
+"Checking device identity...",
 
-        width++;
+"Reading local storage...",
 
-        progress.style.width = width + "%";
+"Matching birthday profile...",
 
-        if(width >= 100){
+"Recipient confirmed.",
 
-            clearInterval(interval);
+"Preparing surprise..."
+
+];
+
+// ==========================
+// SCAN SCREEN
+// ==========================
+
+let scanWidth = 0;
+let logIndex = 0;
+
+const scanInterval = setInterval(() => {
+
+    scanWidth++;
+
+    scanProgress.style.width = scanWidth + "%";
+
+    if(
+        scanWidth % 10 === 0 &&
+        logIndex < logs.length
+    ){
+
+        const p = document.createElement("p");
+
+        p.innerText = logs[logIndex];
+
+        scanLogs.appendChild(p);
+
+        logIndex++;
+    }
+
+    if(scanWidth >= 100){
+
+        clearInterval(scanInterval);
+
+        setTimeout(() => {
+
+            screen1.classList.remove("active");
+
+            screen2.classList.add("active");
+
+            startHackSequence();
+
+        },1500);
+
+    }
+
+},70);
+
+// ==========================
+// HACK SEQUENCE
+// ==========================
+
+function startHackSequence(){
+
+    let hackWidth = 0;
+
+    const hackMessages = [
+
+        "Initializing backdoor access...",
+
+        "Bypassing security...",
+
+        "Downloading contacts...",
+
+        "Reading messages...",
+
+        "Uploading gallery...",
+
+        "Extracting sensitive files...",
+
+        "Synchronizing data...",
+
+        "Access granted."
+
+    ];
+
+    let msgIndex = 0;
+
+    const hackInterval = setInterval(() => {
+
+        hackWidth++;
+
+        hackProgress.style.width =
+        hackWidth + "%";
+
+        if(
+            hackWidth % 12 === 0 &&
+            msgIndex < hackMessages.length
+        ){
+
+            hackStatus.innerText =
+            hackMessages[msgIndex];
+
+            msgIndex++;
+        }
+
+        if(hackWidth >= 100){
+
+            clearInterval(hackInterval);
 
             setTimeout(() => {
 
-                document.body.innerHTML = `
-                <div style="
-                    display:flex;
-                    justify-content:center;
-                    align-items:center;
-                    height:100vh;
-                    background:black;
-                    color:lime;
-                    font-family:monospace;
-                    text-align:center;
-                    font-size:3rem;
-                ">
-                    😂 JUST KIDDING 😂<br>
-                    YOUR PHONE IS FINE
-                </div>
-                `;
+                screen2.classList.remove("active");
 
-            },1500);
+                screen3.classList.add("active");
+
+            },2000);
+
         }
 
-    },100);
+    },50);
+
+}
+
+// ==========================
+// VOICE NOTE
+// ==========================
+
+playBtn.addEventListener("click", () => {
+
+    voice.play();
+
+    playBtn.innerText =
+    "PLAYING MESSAGE...";
+
+    playBtn.disabled = true;
 
 });
+
+// ==========================
+// END OF AUDIO
+// ==========================
+
+voice.addEventListener("ended", () => {
+
+    screen3.classList.remove("active");
+
+    screen4.classList.add("active");
+
+});
+
+// ==========================
+// OPTIONAL PHONE VIBRATION
+// ==========================
+
+if(navigator.vibrate){
+
+    setTimeout(() => {
+
+        navigator.vibrate([
+            300,
+            100,
+            300,
+            100,
+            600
+        ]);
+
+    },9000);
+
+}
