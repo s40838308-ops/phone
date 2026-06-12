@@ -11,6 +11,8 @@ const hackStatus = document.getElementById("hackStatus");
 const playBtn = document.getElementById("playBtn");
 const voice = document.getElementById("voice");
 
+const startBtn = document.getElementById("startBtn");
+
 const logs = [
     "Checking birthday database...",
     "Verifying recipient...",
@@ -24,45 +26,65 @@ const logs = [
     "Preparing surprise..."
 ];
 
-let scanWidth = 0;
-let logIndex = 0;
+function enterFullscreen() {
 
-const scanInterval = setInterval(() => {
-
-    scanWidth++;
-
-    if(scanProgress){
-        scanProgress.style.width = scanWidth + "%";
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
     }
 
-    if(scanWidth % 10 === 0 && logIndex < logs.length){
+}
 
-        const p = document.createElement("p");
-        p.innerText = logs[logIndex];
+function startScanner() {
 
-        if(scanLogs){
-            scanLogs.appendChild(p);
+    let scanWidth = 0;
+    let logIndex = 0;
+
+    const scanInterval = setInterval(() => {
+
+        scanWidth++;
+
+        if(scanProgress){
+            scanProgress.style.width =
+            scanWidth + "%";
         }
 
-        logIndex++;
-    }
+        if(
+            scanWidth % 10 === 0 &&
+            logIndex < logs.length
+        ){
 
-    if(scanWidth >= 100){
+            const p =
+            document.createElement("p");
 
-        clearInterval(scanInterval);
+            p.innerText =
+            logs[logIndex];
 
-        setTimeout(() => {
+            if(scanLogs){
+                scanLogs.appendChild(p);
+            }
 
-            screen1.classList.remove("active");
-            screen2.classList.add("active");
+            logIndex++;
+        }
 
-            startHackSequence();
+        if(scanWidth >= 100){
 
-        },1500);
+            clearInterval(scanInterval);
 
-    }
+            setTimeout(() => {
 
-},70);
+                screen1.classList.remove("active");
+
+                screen2.classList.add("active");
+
+                startHackSequence();
+
+            },1500);
+
+        }
+
+    },70);
+
+}
 
 function startHackSequence(){
 
@@ -73,7 +95,10 @@ function startHackSequence(){
         hackWidth++;
 
         if(hackProgress){
-            hackProgress.style.width = hackWidth + "%";
+
+            hackProgress.style.width =
+            hackWidth + "%";
+
         }
 
         if(hackStatus){
@@ -88,9 +113,22 @@ function startHackSequence(){
 
             clearInterval(hackInterval);
 
+            if(navigator.vibrate){
+
+                navigator.vibrate([
+                    300,
+                    100,
+                    300,
+                    100,
+                    600
+                ]);
+
+            }
+
             setTimeout(() => {
 
                 screen2.classList.remove("active");
+
                 screen3.classList.add("active");
 
             },2000);
@@ -100,6 +138,24 @@ function startHackSequence(){
     },50);
 
 }
+
+// START BUTTON
+
+if(startBtn){
+
+    startBtn.addEventListener("click", () => {
+
+        enterFullscreen();
+
+        startBtn.style.display = "none";
+
+        startScanner();
+
+    });
+
+}
+
+// VOICE NOTE
 
 if(playBtn && voice){
 
@@ -117,6 +173,7 @@ if(playBtn && voice){
     voice.addEventListener("ended", () => {
 
         screen3.classList.remove("active");
+
         screen4.classList.add("active");
 
     });
