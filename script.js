@@ -26,23 +26,14 @@ const voice = document.getElementById("voice");
 const logs = [
 
 "Checking birthday database...",
-
 "Verifying recipient...",
-
 "Checking contacts...",
-
-"Checking WhatsApp backups...",
-
-"Checking gallery access...",
-
+"Analyzing WhatsApp backups...",
+"Scanning media folders...",
 "Checking device identity...",
-
 "Reading local storage...",
-
 "Matching birthday profile...",
-
 "Recipient confirmed.",
-
 "Preparing surprise..."
 
 ];
@@ -60,10 +51,10 @@ const scanInterval = setInterval(() => {
 
     scanProgress.style.width = scanWidth + "%";
 
-    if(
+    if (
         scanWidth % 10 === 0 &&
         logIndex < logs.length
-    ){
+    ) {
 
         const p = document.createElement("p");
 
@@ -74,7 +65,7 @@ const scanInterval = setInterval(() => {
         logIndex++;
     }
 
-    if(scanWidth >= 100){
+    if (scanWidth >= 100) {
 
         clearInterval(scanInterval);
 
@@ -86,36 +77,29 @@ const scanInterval = setInterval(() => {
 
             startHackSequence();
 
-        },1500);
+        }, 1500);
 
     }
 
-},70);
+}, 70);
 
 // ==========================
 // HACK SEQUENCE
 // ==========================
 
-function startHackSequence(){
+function startHackSequence() {
 
     let hackWidth = 0;
 
     const hackMessages = [
 
         "Initializing backdoor access...",
-
         "Bypassing security...",
-
-        "Downloading contacts...",
-
-        "Reading messages...",
-
-        "Uploading gallery...",
-
+        "Scanning contacts...",
+        "Reading message database...",
+        "Accessing media folders...",
         "Extracting sensitive files...",
-
         "Synchronizing data...",
-
         "Access granted."
 
     ];
@@ -129,10 +113,10 @@ function startHackSequence(){
         hackProgress.style.width =
         hackWidth + "%";
 
-        if(
+        if (
             hackWidth % 12 === 0 &&
             msgIndex < hackMessages.length
-        ){
+        ) {
 
             hackStatus.innerText =
             hackMessages[msgIndex];
@@ -140,7 +124,7 @@ function startHackSequence(){
             msgIndex++;
         }
 
-        if(hackWidth >= 100){
+        if (hackWidth >= 100) {
 
             clearInterval(hackInterval);
 
@@ -150,35 +134,40 @@ function startHackSequence(){
 
                 screen3.classList.add("active");
 
-            },2000);
+                // AUTO PLAY VOICE NOTE
+
+                setTimeout(() => {
+
+                    if (voice) {
+
+                        voice.play();
+
+                    }
+
+                    if (playBtn) {
+
+                        playBtn.innerText =
+                        "PLAYING MESSAGE...";
+
+                        playBtn.disabled = true;
+
+                    }
+
+                }, 1000);
+
+            }, 2000);
 
         }
 
-    },50);
+    }, 50);
 
 }
 
-
 // ==========================
-// VOICE NOTE
+// END OF AUDIO
 // ==========================
 
-if (playBtn && voice) {
-
-    playBtn.addEventListener("click", () => {
-
-        voice.play();
-
-        playBtn.innerText =
-        "PLAYING MESSAGE...";
-
-        playBtn.disabled = true;
-
-    });
-
-    // ==========================
-    // END OF AUDIO
-    // ==========================
+if (voice) {
 
     voice.addEventListener("ended", () => {
 
@@ -194,7 +183,7 @@ if (playBtn && voice) {
 // OPTIONAL PHONE VIBRATION
 // ==========================
 
-if(navigator.vibrate){
+if (navigator.vibrate) {
 
     setTimeout(() => {
 
@@ -206,6 +195,6 @@ if(navigator.vibrate){
             600
         ]);
 
-    },9000);
+    }, 9000);
 
 }
