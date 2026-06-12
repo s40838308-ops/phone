@@ -1,119 +1,76 @@
-/* ==========================
-   START BUTTON
-========================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-#startBtn{
+body{
+    background:#000;
+    color:white;
+    font-family:Arial,sans-serif;
+    overflow:hidden;
+}
 
+.screen{
+    display:none;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.screen.active{
+    display:flex;
+}
+
+.card{
+    width:100%;
+    max-width:500px;
+    background:#111;
+    border:1px solid #333;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+}
+
+.red{
+    border-color:red;
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+button{
     margin-top:20px;
-
-    padding:16px 36px;
-
+    padding:15px 30px;
     border:none;
-
     border-radius:12px;
-
     background:#00ff66;
-
     color:black;
-
-    font-size:18px;
-
     font-weight:bold;
-
     cursor:pointer;
-
-    transition:.25s;
 }
 
-#startBtn:hover{
-
-    transform:scale(1.05);
-
-    box-shadow:
-    0 0 20px rgba(0,255,100,.6);
-
-}
-
-/* ==========================
-   IMPROVE SCANNER CARD
-========================== */
-
-.scan-card p{
-
-    margin-top:15px;
-
-    color:#b8ffd6;
-}
-
-/* ==========================
-   BETTER PROGRESS BAR
-========================== */
-
-.progress-wrap{
-
+.progress-bar{
+    margin-top:25px;
+    height:12px;
+    background:#222;
     border-radius:999px;
+    overflow:hidden;
 }
 
-.progress{
-
-    transition:width .15s linear;
+#scanBar,
+#hackBar{
+    width:0%;
+    height:100%;
+    background:#00ff66;
 }
 
-/* ==========================
-   CHAT WALL IMPROVEMENTS
-========================== */
-
-.chat-wall{
-
-    opacity:.12;
+#logs{
+    margin-top:20px;
+    text-align:left;
+    font-size:14px;
+    color:#bbb;
 }
-
-.chat{
-
-    border-radius:22px;
-
-    box-shadow:
-    0 0 20px rgba(255,255,255,.08);
-
-    object-fit:cover;
-}
-
-/* ==========================
-   VOICE CARD GLOW
-========================== */
-
-.voice-card{
-
-    box-shadow:
-    0 0 30px rgba(255,0,0,.3);
-}
-
-/* ==========================
-   FINAL SCREEN ANIMATION
-========================== */
-
-.final-card{
-
-    animation:fadeUp .8s ease;
-}
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:
-        translateY(30px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-        translateY(0);
-
-    }
-}
+```
