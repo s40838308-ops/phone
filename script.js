@@ -1,181 +1,92 @@
+```javascript
 const screen1 = document.getElementById("screen1");
 const screen2 = document.getElementById("screen2");
 const screen3 = document.getElementById("screen3");
 const screen4 = document.getElementById("screen4");
 
-const scanProgress = document.getElementById("scanProgress");
-const hackProgress = document.getElementById("hackProgress");
-const scanLogs = document.getElementById("scanLogs");
-const hackStatus = document.getElementById("hackStatus");
+const startBtn = document.getElementById("startBtn");
+const scanBar = document.getElementById("scanBar");
+const logs = document.getElementById("logs");
+
+const hackBar = document.getElementById("hackBar");
+const hackText = document.getElementById("hackText");
 
 const playBtn = document.getElementById("playBtn");
 const voice = document.getElementById("voice");
 
-const startBtn = document.getElementById("startBtn");
+startBtn.onclick = () => {
 
-const logs = [
-    "Checking birthday database...",
-    "Verifying recipient...",
-    "Checking contacts...",
-    "Checking WhatsApp backups...",
-    "Checking gallery access...",
-    "Checking device identity...",
-    "Reading local storage...",
-    "Matching birthday profile...",
-    "Recipient confirmed.",
-    "Preparing surprise..."
-];
+    let progress = 0;
 
-function enterFullscreen() {
+    const messages = [
+        "Scanning contacts...",
+        "Reading messages...",
+        "Checking gallery...",
+        "Uploading secrets...",
+        "Target identified..."
+    ];
 
-    if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-    }
+    let index = 0;
+
+    const interval = setInterval(() => {
+
+        progress += 5;
+
+        scanBar.style.width = progress + "%";
+
+        if(progress % 20 === 0 && index < messages.length){
+            logs.innerHTML += `<p>${messages[index]}</p>`;
+            index++;
+        }
+
+        if(progress >= 100){
+
+            clearInterval(interval);
+
+            screen1.classList.remove("active");
+            screen2.classList.add("active");
+
+            startHack();
+        }
+
+    },100);
+
+};
+
+function startHack(){
+
+    let progress = 0;
+
+    const interval = setInterval(() => {
+
+        progress += 2;
+
+        hackBar.style.width = progress + "%";
+
+        hackText.innerText =
+            `Extracting data... ${progress}%`;
+
+        if(progress >= 100){
+
+            clearInterval(interval);
+
+            screen2.classList.remove("active");
+            screen3.classList.add("active");
+        }
+
+    },80);
 
 }
 
-function startScanner() {
+playBtn.onclick = () => {
 
-    let scanWidth = 0;
-    let logIndex = 0;
+    voice.play();
 
-    const scanInterval = setInterval(() => {
-
-        scanWidth++;
-
-        if(scanProgress){
-            scanProgress.style.width =
-            scanWidth + "%";
-        }
-
-        if(
-            scanWidth % 10 === 0 &&
-            logIndex < logs.length
-        ){
-
-            const p =
-            document.createElement("p");
-
-            p.innerText =
-            logs[logIndex];
-
-            if(scanLogs){
-                scanLogs.appendChild(p);
-            }
-
-            logIndex++;
-        }
-
-        if(scanWidth >= 100){
-
-            clearInterval(scanInterval);
-
-            setTimeout(() => {
-
-                screen1.classList.remove("active");
-
-                screen2.classList.add("active");
-
-                startHackSequence();
-
-            },1500);
-
-        }
-
-    },70);
-
-}
-
-function startHackSequence(){
-
-    let hackWidth = 0;
-
-    const hackInterval = setInterval(() => {
-
-        hackWidth++;
-
-        if(hackProgress){
-
-            hackProgress.style.width =
-            hackWidth + "%";
-
-        }
-
-        if(hackStatus){
-
-            hackStatus.innerText =
-            "Initializing backdoor access... " +
-            hackWidth + "%";
-
-        }
-
-        if(hackWidth >= 100){
-
-            clearInterval(hackInterval);
-
-            if(navigator.vibrate){
-
-                navigator.vibrate([
-                    300,
-                    100,
-                    300,
-                    100,
-                    600
-                ]);
-
-            }
-
-            setTimeout(() => {
-
-                screen2.classList.remove("active");
-
-                screen3.classList.add("active");
-
-            },2000);
-
-        }
-
-    },50);
-
-}
-
-// START BUTTON
-
-if(startBtn){
-
-    startBtn.addEventListener("click", () => {
-
-        enterFullscreen();
-
-        startBtn.style.display = "none";
-
-        startScanner();
-
-    });
-
-}
-
-// VOICE NOTE
-
-if(playBtn && voice){
-
-    playBtn.addEventListener("click", () => {
-
-        voice.play();
-
-        playBtn.innerText =
-        "PLAYING MESSAGE...";
-
-        playBtn.disabled = true;
-
-    });
-
-    voice.addEventListener("ended", () => {
+    voice.onended = () => {
 
         screen3.classList.remove("active");
-
         screen4.classList.add("active");
+    };
 
-    });
-
-}
+};
+```
