@@ -1,65 +1,89 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Verification</title>
+<title>Birthday Surprise</title>
 
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- SCREEN 1 -->
+
 <section id="screen1" class="screen active">
 
-    <div class="card">
+    <div class="scan-card">
 
-        <h1>Birthday Verification System</h1>
-
-        <p>Tap below to begin scanning.</p>
-
-        <button id="startBtn">
-            START SCAN
-        </button>
-
-        <div class="progress-bar">
-            <div id="scanBar"></div>
+        <div class="topbar">
+            <span>Birthday Verification System</span>
+            <span>87%</span>
         </div>
 
-        <div id="logs"></div>
+        <h1>SCANNING RECIPIENT</h1>
+
+        <div class="scanner">
+            <div class="fingerprint"></div>
+        </div>
+
+        <p>Verifying birthday recipient...</p>
+
+        <div class="progress-wrap">
+            <div id="scanProgress" class="progress"></div>
+        </div>
+
+        <div id="scanLogs" class="logs">
+            <p>Checking birthday database...</p>
+        </div>
 
     </div>
 
 </section>
 
+<!-- SCREEN 2 -->
+
 <section id="screen2" class="screen">
 
-    <div class="card red">
+    <div class="breach-card">
 
-        <h1>⚠ SECURITY BREACH ⚠</h1>
+        <h1>⚠ SECURITY BREACH DETECTED ⚠</h1>
 
-        <h2>Phone Compromised</h2>
+        <h2>YOUR PHONE HAS BEEN HACKED</h2>
 
-        <div class="progress-bar">
-            <div id="hackBar"></div>
+        <p>ALL DATA IS AT RISK</p>
+
+        <div class="progress-wrap red">
+            <div id="hackProgress" class="progress redfill"></div>
         </div>
 
-        <p id="hackText">
-            Accessing device...
+        <p id="hackStatus">
+            Initializing backdoor access...
         </p>
 
     </div>
 
 </section>
 
+<!-- SCREEN 3 -->
+
 <section id="screen3" class="screen">
 
-    <div class="card">
+    <div class="chat-wall">
+
+        <img src="chat 1.jpeg">
+        <img src="chat 3.jpeg">
+        <img src="chat 7.jpeg">
+        <img src="chat 8.jpeg">
+        <img src="chat 10.jpeg">
+
+    </div>
+
+    <div class="voice-card">
 
         <h1>VOICE NOTE RECEIVED</h1>
 
         <button id="playBtn">
-            ▶ PLAY MESSAGE
+            ▶ OPEN BIRTHDAY MESSAGE
         </button>
 
         <audio id="voice" src="lol.mp4"></audio>
@@ -68,15 +92,23 @@
 
 </section>
 
+<!-- SCREEN 4 -->
+
 <section id="screen4" class="screen">
 
-    <div class="card">
+    <div class="final-card">
 
         <h1>🎉 HAPPY BIRTHDAY 🎉</h1>
 
         <h2>YOU GOT PRANKED 😂</h2>
 
-        <p>Have an amazing year ahead ❤️</p>
+        <p>
+            Have an amazing year ahead ❤️
+        </p>
+
+        <p>
+            From your friends
+        </p>
 
     </div>
 
@@ -86,4 +118,3 @@
 
 </body>
 </html>
-```
