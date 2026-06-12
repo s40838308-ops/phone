@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
 <title>Birthday Surprise</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
@@ -17,7 +23,7 @@
 
         <div class="topbar">
             <span>Birthday Verification System</span>
-            <span>87%</span>
+            <span>READY</span>
         </div>
 
         <h1>SCANNING RECIPIENT</h1>
@@ -26,14 +32,17 @@
             <div class="fingerprint"></div>
         </div>
 
-        <p>Verifying birthday recipient...</p>
+        <p>Tap below to begin verification.</p>
+
+        <button id="startBtn">
+            TAP TO START
+        </button>
 
         <div class="progress-wrap">
             <div id="scanProgress" class="progress"></div>
         </div>
 
         <div id="scanLogs" class="logs">
-            <p>Checking birthday database...</p>
         </div>
 
     </div>
@@ -70,11 +79,11 @@
 
     <div class="chat-wall">
 
-        <img src="chat 1.jpeg">
-        <img src="chat 3.jpeg">
-        <img src="chat 7.jpeg">
-        <img src="chat 8.jpeg">
-        <img src="chat 10.jpeg">
+        <img src="chat 1.jpeg" class="chat c1">
+        <img src="chat 3.jpeg" class="chat c2">
+        <img src="chat 7.jpeg" class="chat c3">
+        <img src="chat 8.jpeg" class="chat c4">
+        <img src="chat 10.jpeg" class="chat c5">
 
     </div>
 
@@ -105,6 +114,8 @@
         <p>
             Have a W year ❤️
         </p>
+
+        <br>
 
         <p>
             From your friends
