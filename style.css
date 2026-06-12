@@ -287,6 +287,31 @@ body{
     top:20%;
 }
 
+.c6{
+    right:20%;
+    top:5%;
+}
+
+.c7{
+    left:15%;
+    top:45%;
+}
+
+.c8{
+    right:5%;
+    top:50%;
+}
+
+.c9{
+    left:25%;
+    bottom:2%;
+}
+
+.c10{
+    right:30%;
+    bottom:15%;
+}
+
 @keyframes float{
 
     0%{
