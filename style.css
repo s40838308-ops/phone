@@ -391,3 +391,44 @@ body{
 
     color:#ddd;
 }
+
+/* ------------------------- */
+/* MOBILE FIXES */
+/* ------------------------- */
+
+@media (max-width:768px){
+
+    .scanner{
+        width:180px;
+        height:180px;
+    }
+
+    .fingerprint{
+        width:90px;
+        height:90px;
+    }
+
+    .scan-card,
+    .breach-card,
+    .voice-card{
+        width:95%;
+        padding:25px;
+    }
+
+    .breach-card h1{
+        font-size:2rem;
+    }
+
+    .final-card h1{
+        font-size:2.5rem;
+    }
+
+    .final-card h2{
+        font-size:1.4rem;
+    }
+
+    .chat{
+        width:180px;
+    }
+
+}
